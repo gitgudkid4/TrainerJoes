@@ -390,16 +390,13 @@
     border-left: 1px solid #e2e2e2;
     display: flex;
     margin: 0;
-    border-radius: 0;
-    background: transparent;
     padding: 0;
 }
 
-.add-to-watchlist-button button {
+.add-to-watchlist-button .modal-trigger {
     width: 100%;
     background: transparent;
     color: #666;
-    border: none;
     padding: 11px 0;
     font-family: 'Open Sans', sans-serif;
     font-size: 10px;
@@ -408,9 +405,13 @@
     text-transform: uppercase;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.add-to-watchlist-button button:hover {
+.add-to-watchlist-button .modal-trigger:hover {
     background: #111;
     color: #fff;
 }

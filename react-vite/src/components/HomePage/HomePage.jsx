@@ -55,10 +55,14 @@ const HomePage = () => {
         console.log("Success!");
     };
 
+    const visibleProducts = currUser
+        ? products.filter((product) => product.user_id !== currUser.id)
+        : products;
+
     const uniqueTypes = [
         "All",
         ...new Set(
-            products.flatMap((product) =>
+            visibleProducts.flatMap((product) =>
                 [product.pokemon.type_1, product.pokemon.type_2].filter(Boolean)
             )
         ),
@@ -66,8 +70,8 @@ const HomePage = () => {
 
     const filteredProducts =
         selectedType === "All"
-            ? products
-            : products.filter(
+            ? visibleProducts
+            : visibleProducts.filter(
                   (product) =>
                       product.pokemon.type_1 === selectedType ||
                       product.pokemon.type_2 === selectedType
