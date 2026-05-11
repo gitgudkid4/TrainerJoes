@@ -1,3 +1,180 @@
+#profile-page-container {
+    min-height: 100vh;
+    background: #f7f7f7;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0 0 80px;
+    color: #111;
+}
+
+/* ── Profile header ───────────────────────────────────── */
+#profile-top-container {
+    background: #111;
+    padding: 48px 80px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+#profile-info-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+#profile-info-container h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.profile-avatar {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #333;
+    flex-shrink: 0;
+}
+
+/* ── Tabs ─────────────────────────────────────────────── */
+.profile-links {
+    display: flex;
+    gap: 0;
+}
+
+.profile-links > div {
+    padding: 0;
+    cursor: pointer;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s;
+    margin-right: 32px;
+}
+
+.profile-links > div.active,
+.profile-links > div.watchlist {
+    border-bottom-color: #fff;
+}
+
+.product-component-h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0;
+    padding-bottom: 8px;
+    transition: color 0.15s;
+}
+
+.profile-links > div.active .product-component-h3,
+.profile-links > div.watchlist .product-component-h3 {
+    color: #fff;
+}
+
+.product-component-h3:hover {
+    cursor: pointer;
+    color: #fff;
+}
+
+/* ── Product grid (reuses HomePage card styles) ──────── */
+#profile-listings-container {
+    padding: 40px 80px 0;
+    border-top: none;
+    flex: unset;
+}
+
+#profile-listings-container > div > h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #999;
+    margin: 40px 0;
+    letter-spacing: 1px;
+}
+
+/* Card grid — same as HomePage */
 .profile-page-container {
     height: 100%;
 }
+
+/* profile-content is unused but keep it clean */
+.profile-content {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.profile-content h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+}
+
+html, body { height: 100%; margin: 0; }
+
+/* ── Watchlist / edit / delete buttons on profile ────── */
+.edit-button-container,
+.delete-button-container {
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #555;
+    padding: 8px 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    border-radius: 0;
+    margin: 0 0 8px;
+}
+
+.edit-button-container:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.delete-button-container:hover {
+    background: #e00;
+    color: #fff;
+    border-color: #e00;
+}
+
+#user-product-edit-delete-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.watchlist-button-container {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 0;
+    margin: 0;
+    width: auto;
+    margin-left: 0;
+}
+
+.watchlist-button-container:hover { background: #e00; }

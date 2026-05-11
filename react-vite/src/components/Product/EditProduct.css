@@ -1,28 +1,94 @@
 #edit-form-container {
-    margin-left: 29px;
-    margin-right: 20px;
+    padding: 40px 48px;
+    background: #fff;
+    font-family: 'Open Sans', sans-serif;
+    min-width: 480px;
+    max-width: 580px;
+}
+
+#edit-form-container h1,
+#edit-form-container h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 28px;
+    letter-spacing: -0.3px;
+}
+
+#edit-form-container label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+#edit-form-container input[type="text"],
+#edit-form-container input[type="number"],
+#edit-form-container select,
+#edit-form-container textarea {
+    border: none;
+    border-bottom: 2px solid #e2e2e2;
+    padding: 10px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #111;
+    outline: none;
+    background: transparent;
+    transition: border-color 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#edit-form-container input:focus,
+#edit-form-container select:focus,
+#edit-form-container textarea:focus {
+    border-bottom-color: #111;
+}
+
+#edit-form-container input[type="checkbox"] {
+    width: auto;
+    accent-color: #111;
 }
 
 .level-item-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
+    gap: 28px;
+    align-items: flex-start;
 }
 
-.edit-level-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-
+.edit-level-container,
 .edit-item-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    margin-top: -15px;
+    margin: 0 0 20px;
 }
 
-.product-image {
-    padding-left: 50px;
+.edit-item-container { margin-top: 0; }
 
+.product-image { padding: 0; }
+
+#edit-form-container button[type="submit"] {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 13px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 0;
 }
+
+#edit-form-container button[type="submit"]:hover { background: #e00; }

@@ -1,41 +1,79 @@
-/* AddReview.css */
-.thumbs-container {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
 .add-review-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-.thumbs-up-button, .thumbs-down-button {
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+    padding: 40px 44px;
+    min-width: 360px;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.thumbs-up-button.active, .thumbs-down-button.active {
-    color: green;
-}
-
-.thumbs-down-button.active {
-    color: red;
-}
-
-.submit-button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
+.add-review-form h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 28px;
+    letter-spacing: -0.3px;
 }
 
 .review-text-area {
-    width: 300px;
-    height: 100px;
+    width: 100%;
+    height: 110px;
+    border: 1px solid #e2e2e2;
+    border-bottom: 2px solid #e2e2e2;
+    padding: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #111;
+    outline: none;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+    margin-bottom: 20px;
 }
+
+.review-text-area:focus { border-color: #111; }
+
+/* Thumbs up / down */
+.thumbs-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.thumbs-up-button,
+.thumbs-down-button {
+    font-size: 1.4rem;
+    padding: 8px 18px;
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    border-radius: 0;
+    line-height: 1;
+}
+
+.thumbs-up-button:hover   { background: #f0fff0; border-color: #5a8; }
+.thumbs-down-button:hover { background: #fff0f0; border-color: #e00; }
+
+.thumbs-up-button.active   { background: #5a8; border-color: #5a8; color: #fff; }
+.thumbs-down-button.active { background: #e00; border-color: #e00; color: #fff; }
+
+/* Submit */
+.submit-button {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 13px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+}
+
+.submit-button:hover { background: #e00; }

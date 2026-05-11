@@ -2,21 +2,47 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    border-radius: 10px;
+    gap: 20px;
+    padding: 44px 48px;
+    min-width: 340px;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0;
+}
+
+#modal-container h1,
+#modal-container h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    text-align: center;
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+#modal-container p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+    margin: 0;
 }
 
 .modal-button {
-    background-color: #c3b091; /* Red background */
-    color: white; /* White text color for contrast */
-    border: none; /* Remove default button border */
-    padding: 10px 20px; /* Adjust padding as needed */
-    font-size: 16px; /* Adjust font size as needed */
-    cursor: pointer; /* Change cursor to pointer */
-    border-radius: 5px; /* Optional: rounded corners */
-    margin: 5px; /* Optional: space between buttons */
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 12px 36px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 0;
+    width: 100%;
+    margin: 0;
 }
 
-.modal-button:hover {
-    background-color: #c3b151; /* Darker red on hover */
-}
+.modal-button:hover { background: #e00; }

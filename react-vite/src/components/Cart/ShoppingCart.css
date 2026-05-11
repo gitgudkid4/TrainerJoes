@@ -1,137 +1,178 @@
-/* General Styles for the Shopping Cart */
 #shopping-cart-container {
-    padding: 20px;
-    background-color: rgba(245, 245, 245, 0.5); /* Light grey with 50% opacity */
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh; /* Full height of the viewport */
+    min-height: 100vh;
+    background: #f7f7f7;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0 0 80px;
 }
 
-/* Product Image Styling */
-.product-pokemon-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+#shopping-cart-container > h1 {
+    background: #111;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: left;
+    margin: 0;
+    padding: 36px 80px;
+    border-bottom: 1px solid #2a2a2a;
 }
 
-/* Shopping Cart Item Container */
+/* Cart items wrapper */
 .shopping-cart-item {
-    padding: 30px;
-    border-radius: 10px;
-    background-color: white;
-    width: 1000px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 860px;
+    margin: 48px auto 0;
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    padding: 0;
+    border-radius: 0;
+    width: auto;
+    align-items: unset;
+    flex-direction: unset;
+    display: block;
 }
 
-/* Product Card Container */
+/* Each product row */
 #product-card-container {
     display: flex;
-    flex-direction: column;
-    width: 100%; /* Ensures full width of the container */
-    margin-bottom: 20px; /* Spacing between items */
+    flex-direction: row;
+    align-items: stretch;
+    border-bottom: 1px solid #e2e2e2;
+    width: 100%;
+    margin: 0;
 }
 
-/* Product Card Styling */
+/* Clickable product info */
 #product-card {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    background-color: #fff;
-    gap: 15px; /* Gap between items in the card */
-    transition: transform 0.3s, box-shadow 0.3s;
-
-    max-width: 1000px; /* Maximum width for the card */
+    gap: 24px;
+    padding: 20px 28px;
+    flex: 1;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    transition: background 0.15s;
+    max-width: unset;
 }
 
-/* Hover Effect for Product Card */
 #product-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: #fafafa;
+    transform: none;
+    box-shadow: none;
 }
 
-/* Product Card Info */
+/* Pokemon sprite */
+.product-pokemon-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 0;
+    background: #f0f0f0;
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+/* Product text */
 .product-card-info {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Space between text elements */
+    gap: 4px;
 }
 
-/* Text Styling inside Product Card */
-.product-card-info h2,
-.product-card-info h3 {
-    margin: 0; /* Remove default margin */
-}
-
-.product-card-info h2 {
-    font-size: 1.2rem;
+#product-card h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
     font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0;
 }
 
-.product-card-info h3 {
-    font-size: 1rem;
-    font-weight: 400;
+#product-card h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #111;
+    margin: 0;
+    letter-spacing: -0.3px;
 }
 
-/* Remove Button Styling */
+#product-card h2:last-of-type {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin-top: 4px;
+}
+
+/* Remove button */
 #remove-button {
-    background-color: #c3b091; /* Red color for emphasis */
-    color: #fff;
+    background: transparent;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-left: 1px solid #e2e2e2;
+    color: #bbb;
+    padding: 0 28px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
+    border-radius: 0;
 }
 
 #remove-button:hover {
-    background-color: #d62839; /* Darker red on hover */
+    background: #e00;
+    color: #fff;
+    border-left-color: #e00;
 }
 
-/* Checkout Button Styling */
+/* Checkout button row */
 #button-container {
-    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 24px 28px;
+    background: #fafafa;
+    border-top: 1px solid #e2e2e2;
+    width: auto;
+    border-radius: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: unset;
+    margin: 0;
 }
 
 #button-container button {
-    background-color: #c3b091; /* Blue color */
+    background: #111;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    padding: 13px 44px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.15s;
+    border-radius: 0;
 }
 
-#button-container button:hover {
-    background-color: #c3b151; /* Darker blue on hover */
-}
+#button-container button:hover { background: #e00; }
+#button-container:hover { background: #fafafa; }
 
-#button-container {
-    background-color: #c3b091; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */
-    cursor: pointer; /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-    width: 160px;
+/* Empty cart */
+.shopping-cart-item > p {
+    padding: 60px;
     text-align: center;
-}
-
-
-#button-container:hover {
-    transition: background-color 0.3s;
-    background-color: #c3b151;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #aaa;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
 }

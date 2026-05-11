@@ -1,151 +1,15 @@
 #profile-page-container {
-    display: flex;
+    min-height: 100vh;
+    background: #f7f7f7;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0 0 80px;
+    color: #111;
     flex-direction: column;
-    min-height: 100vh; /* Ensures the container takes at least the full height of the viewport */
-    padding: 20px;
-    background-color: rgba(
-        245,
-        245,
-        245,
-        0.5
-    ); /* Light grey with 80% opacity */
-    color: #333;
-}
-
-/* Ensure the content area grows as needed */
-#profile-listings-container {
-    flex: 1; /* Allows the container to grow and push the footer down */
-    padding: 20px;
-    border-top: 1px solid #ddd;
-}
-
-#profile-top-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-#profile-info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.profile-avatar {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
-.profile-greeting {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.profile-links {
-    display: flex;
-    gap: 20px;
-}
-
-.profile-link {
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #eee;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.profile-link:hover {
-    background-color: #ddd;
-}
-
-.profile-link.active {
-    background-color: #007bff;
-    color: #fff;
 }
 
 #profile-listings-container {
-    padding: 20px;
-    border-top: 1px solid #ddd;
-}
-
-.profile-content {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.profile-content h2 {
-    font-size: 22px;
-    margin-top: 0;
-}
-
-.profile-avatar {
-    border-radius: 50%;
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure image covers the circle */
-    margin-bottom: 10px;
-}
-
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-
-.edit-button-container {
-    background-color: #c3b091; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */
-    cursor: pointer; /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-}
-
-.delete-button-container {
-    background-color: #c3b091; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */
-    cursor: pointer; /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-}
-
-#user-product-edit-delete-container {
-    display: flex;
-    justify-content: space-around;
-}
-
-.watchlist-button-container {
-    background-color: #c3b091; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */
-    cursor: pointer; /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-    width: 50px;
-    margin-left: 95px;
-}
-
-.product-component-h3:hover {
-    cursor:pointer
+    padding: 40px 80px;
+    border-top: none;
+    flex: 1;
 }

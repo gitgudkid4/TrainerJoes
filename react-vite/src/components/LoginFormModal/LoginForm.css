@@ -1,0 +1,75 @@
+/* Shared modal form style — Login */
+#modal-content h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.3px;
+    margin: 0 0 28px;
+    text-align: left;
+}
+
+#modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-width: 340px;
+    padding: 40px;
+}
+
+#modal-content label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 18px;
+}
+
+#modal-content input[type="text"],
+#modal-content input[type="password"],
+#modal-content input[type="email"] {
+    border: none;
+    border-bottom: 2px solid #e2e2e2;
+    padding: 10px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #111;
+    outline: none;
+    background: transparent;
+    transition: border-color 0.15s;
+    width: 100%;
+}
+
+#modal-content input:focus {
+    border-bottom-color: #111;
+}
+
+#modal-content p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: #e00;
+    margin: -12px 0 14px;
+}
+
+#modal-content button[type="submit"] {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 13px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    width: 100%;
+    margin-top: 8px;
+}
+
+#modal-content button[type="submit"]:hover { background: #e00; }

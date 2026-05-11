@@ -1,452 +1,630 @@
-/* Container Styling */
+/* ── Shared font / reset vars ─────────────────────────── */
+:root {
+    --font: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    --black: #111;
+    --border: #e2e2e2;
+    --muted: #999;
+    --bg: #f7f7f7;
+}
+
+/* ── Page shell ───────────────────────────────────────── */
 #product-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(245, 245, 245, 0.5);
     min-height: 100vh;
-    font-family: Arial, sans-serif; /* Ensure consistent font across the container */
+    background: var(--bg);
+    display: block;
+    padding: 0;
+    align-items: unset;
+    justify-content: unset;
+    font-family: var(--font);
 }
 
 #product-container {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 1200px;
-    min-height: 80vh;
-    padding: 40px;
+    max-width: 1100px;
+    margin: 48px auto;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
     box-sizing: border-box;
-    background-color: rgba(245, 245, 245);
-    overflow: hidden;
-    border: 2px solid black;
+    overflow: visible;
 }
 
-.product-modal-button-container {
-    background: #c3b091; /* Bright blue background color */
-    border: 1px solid #c3b091; /* Matching border color */
-    color: white; /* White text color for contrast */
-    padding: 10px 20px; /* Comfortable padding */
-    font-size: 16px; /* Adjust font size */
-    font-weight: bold; /* Make text bold */
-    border-radius: 5px;
-    width: 100px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition effects */
-    margin-left: 960px;
-    transform: translate(0, -545px)
-}
-
+/* ── Seller attribution ───────────────────────────────── */
 .posted-user-container {
-    margin-top: -50px;
+    display: block;
+    padding: 16px 40px;
+    background: #f9f9f9;
+    border-bottom: 1px solid var(--border);
     text-decoration: none;
-    width: 300px;
+    margin: 0;
+    width: auto;
 }
 
-.posted-user-container:hover {
+.posted-user-container h4 {
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+}
+
+.posted-user-container:hover h4 {
+    color: var(--black);
     text-decoration: underline;
 }
-.posted-user-container h4 {
-    font-size: 25px;
-    color: black; /* Adjust to your desired size */
-}
 
-.modal-button-container:hover {
-    background: #c3b151; /* Darker blue background on hover */
-    border-color: #c3b151; /* Match border color with background on hover */
-}
-
-.modal-button-container:active {
-    background: #c3b151; /* Even darker blue when button is clicked */
-    border-color: #c3b151; /* Match border color with background on click */
-}
-
-/* Product Card Styling */
-.product-card {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-/* Name and Image Styling */
+/* ── Main product grid ────────────────────────────────── */
 .pokemon-name-img-type-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: -500px;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+        "name  name"
+        "types types"
+        "image stats";
+    margin: 0;
+    gap: 0;
 }
 
-.ability-item-nature-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transform: translate(
-        140px,
-        -500px
-    ); /* Move 200px to the right and 200px up */
-}
-
+/* Name + Level */
 .name-level-container {
+    grid-area: name;
+    padding: 32px 40px 16px;
+    font-family: var(--font);
     font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    margin-left: -930px;
-}
-
-.img-container {
-    width: 500px;
-    height: 500px;
-    object-fit: contain;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-left: -600px;
-    margin-top: -60px;
-}
-
-.type-container {
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -1px;
+    margin: 0;
     display: flex;
-    gap: 15px;
-    font-size: 20px;
-    color: #555;
-    margin-left: -500px;
-    transform: translateY(-95px); /* Move up by 200px */
-    margin-right: 40px;
+    align-items: baseline;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
 }
 
-.product-shiny-container {
-    transform: translateY(px);
-}
-.pokemon-type {
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid black;
-    color: black;
+.name-level-container h2 {
     display: inline-block;
-    margin-right: 5px;
-    text-align: center;
+    background: var(--black);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin: 0;
+    vertical-align: middle;
 }
 
-#moves-info {
+/* Types */
+.type-container {
+    grid-area: types;
+    display: flex;
+    gap: 8px;
+    padding: 16px 40px;
+    margin: 0;
+    transform: none;
+    border-bottom: 1px solid var(--border);
+    font-size: unset;
+    color: unset;
+    margin-right: 0;
+}
+
+.type-container .pokemon-type {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    color: #fff;
+    font-family: var(--font);
+    border: none;
+    border-radius: 0;
+    display: inline-block;
+    margin: 0;
+}
+
+/* Re-declare type colours (scoped to product page) */
+.type-container .pokemon-type.fire     { background: #e64; }
+.type-container .pokemon-type.water    { background: #48a; }
+.type-container .pokemon-type.grass    { background: #5a8; }
+.type-container .pokemon-type.electric { background: #ca0; }
+.type-container .pokemon-type.psychic  { background: #c36; }
+.type-container .pokemon-type.ice      { background: #5bb; }
+.type-container .pokemon-type.dragon   { background: #538; }
+.type-container .pokemon-type.dark     { background: #222; }
+.type-container .pokemon-type.fairy    { background: #c69; }
+.type-container .pokemon-type.normal   { background: #888; }
+.type-container .pokemon-type.fighting { background: #833; }
+.type-container .pokemon-type.flying   { background: #79c; }
+.type-container .pokemon-type.poison   { background: #72a; }
+.type-container .pokemon-type.ground   { background: #963; }
+.type-container .pokemon-type.rock     { background: #876; }
+.type-container .pokemon-type.bug      { background: #6a2; }
+.type-container .pokemon-type.ghost    { background: #547; }
+.type-container .pokemon-type.steel    { background: #89a; }
+
+/* Pokemon image – left column */
+.img-container {
+    grid-area: image;
+    width: 100%;
+    height: 420px;
+    object-fit: contain;
+    background: #f4f4f4;
+    border: none;
+    border-right: 1px solid var(--border);
+    border-radius: 0;
+    margin: 0;
+    display: block;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+/* Stats column – right side */
+.ability-item-nature-container {
+    grid-area: stats;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    padding: 28px 36px;
+    gap: 0;
+    transform: none;
+    margin: 0;
+}
+
+.product-ability-container,
+.product-item-container,
+.product-nature-container {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 12px 0;
+}
+
+.product-ability-container h2,
+.product-item-container h2,
+.product-nature-container h2 {
+    font-family: var(--font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+    min-width: 90px;
+}
+
+.product-ability-container h3,
+.product-item-container h3,
+.product-nature-container h3 {
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0;
+}
+
+/* Shiny */
+.product-shiny-container {
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    transform: none;
+}
+
+.product-shiny-container h2 {
+    font-family: var(--font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* Moves */
+#moves-info {
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#moves-info > h2 {
+    font-family: var(--font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px;
 }
 
 .product-moves-container {
-    border: 1px solid grey;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    height: 60px; /* Adjust height to fit 2 rows */
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;/* 2 columns of equal width */ /* Optional: space between moves */
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
 }
 
+.product-moves-container h3 {
+    background: var(--black);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 12px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Price + Quantity */
+.product-quantity-price-container {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 20px 0 12px;
+    transform: none;
+    justify-content: flex-start;
+}
 
 .price-container {
+    font-family: var(--font);
     font-size: 28px;
-    font-weight: bold;
-    transform: translate(-33px, -20px);
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.5px;
+    transform: none;
 }
-/* Info Container Styling */
-.info-container {
+
+.price-container:last-child {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Cart / Watchlist buttons */
+.product-cart-watchlist {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap; /* Allows the content to wrap on smaller screens */
-    gap: 20px;
+    gap: 8px;
+    flex-direction: column;
+    transform: none;
+    margin-top: 8px;
 }
 
-.info-container div {
-    flex: 1;
-    min-width: 200px;
+.product-cart-button {
+    background: var(--black);
+    color: #fff;
+    border: none;
+    padding: 12px 0;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    margin: 0;
 }
 
-/* Game Data and Description Styling */
+.product-cart-button:hover { background: #e00; }
+
+.product-cart-text {
+    background: #e2e2e2;
+    color: #aaa;
+    padding: 12px 0;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+}
+
+.product-add-to-watchlist-button {
+    border: 1px solid #ccc;
+    display: flex;
+    border-radius: 0;
+    margin: 0;
+    background: transparent;
+    padding: 0;
+    width: 100%;
+}
+
+.product-add-to-watchlist-button button {
+    width: 100%;
+    background: transparent;
+    color: #555;
+    border: none;
+    padding: 12px 0;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.product-add-to-watchlist-button button:hover {
+    background: var(--black);
+    color: #fff;
+}
+
+.product-watchlisted-text {
+    background: #e2e2e2;
+    color: #aaa;
+    padding: 12px 0;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+}
+
+.product-user-product {
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 0;
+    margin: 0;
+    transform: none;
+}
+
+/* ── Game / description section ───────────────────────── */
 .game-data-container {
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
-    padding: 20px;
-    border-radius: 10px;
-    transform: translate(5px, -60px);
+    gap: 20px;
+    transform: none;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.game-data-container h2 {
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
 }
 
 .description-image-container {
     display: flex;
+    gap: 32px;
+    align-items: flex-start;
     flex-direction: row;
-    align-items: center;
-    gap: 15px;
 }
 
 .description-image {
-    width: 500px;
-    height: 250px;
-    border: 1px solid black;
-}
-.description {
-    font-size: 18px;
-    color: #666;
-    text-align: left;
-    margin: 10px;
-    margin-top: -210px;
-    overflow: hidden;
-    text-overflow: elipses;
-}
-
-.description-image {
+    width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    flex-shrink: 0;
     max-width: 35%;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
-/* Quantity and Price Styling */
-.product-quantity-price-container {
+.description {
+    font-family: var(--font);
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+    overflow: visible;
+    text-overflow: unset;
+}
+
+/* ── Edit button ──────────────────────────────────────── */
+.product-modal-button-container {
     display: flex;
-    justify-content: center;
-    transform: translate(-25px, 8px);
+    padding: 0 40px 24px;
+    margin: 0;
+    transform: none;
 }
 
-/* Reviews Section Styling */
+.product-modal-button-container button {
+    background: #fff;
+    border: 1px solid var(--black);
+    color: var(--black);
+    padding: 10px 28px;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    border-radius: 0;
+}
+
+.product-modal-button-container button:hover {
+    background: var(--black);
+    color: #fff;
+}
+
+/* ── Reviews ──────────────────────────────────────────── */
 #review-cart {
-    margin-top: 20px;
-    border-top: 2px solid black;
+    border-top: 2px solid var(--black);
+    padding: 32px 40px;
+    margin: 0;
+}
+
+#review-cart > h2 {
+    font-family: var(--font);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0 0 4px;
+    letter-spacing: -0.3px;
+}
+
+#review-cart > h3 {
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+}
+
+.sentiment-container {
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.sentiment-container p {
+    background: var(--black);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin: 0;
 }
 
 .review-card {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--black);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    box-shadow: none;
+    border-radius: 0;
 }
 
 .review-card h3 {
-    font-size: 20px;
-    color: #333;
-    margin: 0;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0 0 6px;
+    letter-spacing: 0.3px;
 }
 
 .review-card p {
-    font-size: 16px;
-    color: #666;
+    font-family: var(--font);
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 8px;
+    line-height: 1.6;
 }
 
-/* Buttons Styling */
-.user-review-button {
-    display: flex;
-    gap: 10px;
-}
-
-.edit-product-button,
-.add-review-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.edit-product-button button,
-.add-review-button button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.edit-product-button button:hover,
-.add-review-button button:hover {
-    background-color: #0056b3;
-}
-
-.add-review-button {
-    margin-right: 1100px;
-    width: 100px;
-    background-color: #c3b091;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.product-cart-button {
-    background-color: #c3b091; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */
-    cursor: pointer; /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-    width: 160px;
-    text-align: center;
-}
-
-.product-add-to-watchlist-button {
-    background-color: #c3b091; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */
-    cursor: pointer; /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-    width: 120px;
-    text-align: center;
-}
-
-.product-cart-watchlist {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    transform: translate(430px, -140px)
-}
-
-.product-user-product{
-    transform: translate(430px, -790px)
-}
-.product-cart-text {
-    background-color: gray; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners *//* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-    width: 120px;
-    text-align: center;
-}
-
-.product-watchlisted-text {
-    background-color: gray; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */ /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-    width: 120px;
-    text-align: center;
-}
-
-
-
-p {
-    font-size: 16px;
-    color: #999;
-}
-
-h2 {
-    font-size: 24px;
-    margin: 0 0 10px;
-    color: #333;
-}
-
-h3 {
+.review-card p:last-of-type {
     font-size: 18px;
     margin: 0;
+    color: var(--black);
+}
+
+.user-review-button {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.review-delete-button button,
+.review-edit-button button {
+    background: transparent;
+    border: 1px solid #ccc;
     color: #555;
-}
-
-.review-delete-button:hover {
+    padding: 6px 18px;
+    font-family: var(--font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     cursor: pointer;
-    text-decoration: underline;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.review-edit-button:hover {
+.review-delete-button button:hover {
+    background: #e00;
+    color: #fff;
+    border-color: #e00;
+}
+
+.review-edit-button button:hover {
+    background: var(--black);
+    color: #fff;
+    border-color: var(--black);
+}
+
+.review-delete-button:hover { cursor: pointer; }
+.review-edit-button:hover   { cursor: pointer; }
+
+.add-review-button {
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: flex-start;
+    width: auto;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+}
+
+.add-review-button button {
+    background: var(--black);
+    color: #fff;
+    border: none;
+    padding: 11px 28px;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     cursor: pointer;
-    text-decoration: underline;
-}
-.add-review-button:hover {
-    cursor: pointer;
-}
-.description-box {
-    overflow: hidden;
-    text-overflow: elipses;
+    transition: background 0.15s;
+    border-radius: 0;
 }
 
-.pokemon-type.fire {
-    background-color: #f08030;
+.add-review-button button:hover { background: #e00; }
+
+.add-review-button:hover { cursor: pointer; }
+
+#review-cart > p {
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
 }
 
-.pokemon-type.water {
-    background-color: #6890f0;
-}
-
-.pokemon-type.grass {
-    background-color: #78c850;
-}
-
-.pokemon-type.electric {
-    background-color: #f8d030;
-}
-
-.pokemon-type.ice {
-    background-color: #98d8d8;
-}
-
-.pokemon-type.fighting {
-    background-color: #c03028;
-}
-
-.pokemon-type.poison {
-    background-color: #a040a0;
-}
-
-.pokemon-type.ground {
-    background-color: #e0c068;
-}
-
-.pokemon-type.flying {
-    background-color: #a890f0;
-}
-
-.pokemon-type.psychic {
-    background-color: #f85888;
-}
-
-.pokemon-type.bug {
-    background-color: #a8b820;
-}
-
-.pokemon-type.rock {
-    background-color: #b8a038;
-}
-
-.pokemon-type.ghost {
-    background-color: #705898;
-}
-
-.pokemon-type.dragon {
-    background-color: #7038f8;
-}
-
-.pokemon-type.dark {
-    background-color: #705848;
-}
-
-.pokemon-type.steel {
-    background-color: #b8b8d0;
-}
-
-.pokemon-type.fairy {
-    background-color: #ee99ac;
-}
-
-.pokemon-type.normal {
-    background-color: #a8a878;
-}
+/* ── Suppress stale global overrides ──────────────────── */
+p  { font-size: inherit; color: inherit; }
+h2 { font-size: inherit; margin: 0; color: inherit; }
+h3 { font-size: inherit; margin: 0; color: inherit; }
