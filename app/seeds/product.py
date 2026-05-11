@@ -1,4 +1,5 @@
 import os
+from sqlalchemy.sql import text
 from app.models import db, Product, User, Pokemon, environment, SCHEMA
 
 

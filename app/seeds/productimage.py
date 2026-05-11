@@ -1,4 +1,5 @@
 import os
+from sqlalchemy.sql import text
 from app.models import db, Product, User, Pokemon, ProductImage, environment, SCHEMA
 
 
@@ -92,6 +93,6 @@ def undo_productimages():
             f"TRUNCATE table {SCHEMA}.product_images RESTART IDENTITY CASCADE;"
         )
     else:
-        db.session.execute(test("DELETE FROM products"))
+        db.session.execute(text("DELETE FROM product_images"))
 
     db.session.commit()
