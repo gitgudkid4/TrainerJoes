@@ -11,6 +11,7 @@ import pokemonReducer from "./pokemon";
 import watchlistReducer from "./watchlist";
 import cartReducer from "./cart";
 import reviewsReducer from "./review";
+import moveReducer from "./move";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   pokemon: pokemonReducer,
   watchlist: watchlistReducer,
   cart: cartReducer,
-  review: reviewsReducer
+  review: reviewsReducer,
+  move: moveReducer,
 });
 
 let enhancer;

@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from sqlalchemy.schema import ForeignKey
+
 
 class Pokemon(db.Model):
     __tablename__ = 'pokemon'
@@ -11,17 +11,21 @@ class Pokemon(db.Model):
     name = db.Column(db.String(500), nullable=False)
     pokemon_img = db.Column(db.String(1000), nullable=False)
     pokemon_sprite = db.Column(db.String(1000), nullable=False)
-    type_1 = db.Column(db.String(55), nullable=False)
-    type_2 = db.Column(db.String(55), nullable=True)
+    type_1_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('types.id')), nullable=False)
+    type_2_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('types.id')), nullable=True)
+
+    type_1_obj = db.relationship('Type', foreign_keys=[type_1_id], back_populates='pokemon_primary')
+    type_2_obj = db.relationship('Type', foreign_keys=[type_2_id], back_populates='pokemon_secondary')
+    products = db.relationship('Product', back_populates='pokemon')
 
     def to_dict(self):
         return {
-            "id": self.id,
-            "name": self.name,
-            "pokemon_img": self.pokemon_img,
-            "pokemon_sprite": self.pokemon_sprite,
-            "type_1": self.type_1,
-            "type_2": self.type_2 if self.type_2 else None
+            'id': self.id,
+            'name': self.name,
+            'pokemon_img': self.pokemon_img,
+            'pokemon_sprite': self.pokemon_sprite,
+            'type_1': self.type_1_obj.name if self.type_1_obj else None,
+            'type_1_color': self.type_1_obj.color_hex if self.type_1_obj else None,
+            'type_2': self.type_2_obj.name if self.type_2_obj else None,
+            'type_2_color': self.type_2_obj.color_hex if self.type_2_obj else None,
         }
-
-    products = db.relationship('Product', back_populates='pokemon')

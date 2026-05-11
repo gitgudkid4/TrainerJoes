@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from sqlalchemy.schema import ForeignKey
 from sqlalchemy import Numeric
+
 
 class Product(db.Model):
     __tablename__ = "products"
@@ -26,13 +26,8 @@ class Product(db.Model):
     shiny = db.Column(db.Boolean)
     generation = db.Column(db.Integer, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
-    price = db.Column(Numeric(10,2), nullable=False)
+    price = db.Column(Numeric(10, 2), nullable=False)
     description = db.Column(db.String(500), nullable=False)
-
-    move_1 = db.Column(db.String(1000), nullable=False)
-    move_2 = db.Column(db.String(1000))
-    move_3 = db.Column(db.String(1000))
-    move_4 = db.Column(db.String(1000))
 
     user = db.relationship("User", back_populates="products")
     pokemon = db.relationship("Pokemon", back_populates="products")
@@ -41,6 +36,9 @@ class Product(db.Model):
     watchlist_items = db.relationship("WatchlistItem", back_populates="product")
     product_image = db.relationship(
         "ProductImage", cascade="all, delete-orphan", back_populates="product"
+    )
+    product_moves = db.relationship(
+        "ProductMove", cascade="all, delete-orphan", back_populates="product"
     )
 
     def to_dict(self):
@@ -66,8 +64,8 @@ class Product(db.Model):
             ),
             "reviews": [review.to_dict() for review in self.reviews],
             "product_image": [image.to_dict() for image in self.product_image],
-            "move_1": self.move_1,
-            "move_2": self.move_2,
-            "move_3": self.move_3,
-            "move_4": self.move_4,
+            "moves": sorted(
+                [pm.to_dict() for pm in self.product_moves],
+                key=lambda x: x["slot"],
+            ),
         }

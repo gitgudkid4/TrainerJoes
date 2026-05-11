@@ -162,10 +162,15 @@ const OneProduct = () => {
                                     <div id="moves-info">
                                         <h2>Moves:</h2>
                                         <div className="product-moves-container">
-                                            <h3>{product.move_1}</h3>
-                                            <h3>{product.move_2}</h3>
-                                            <h3>{product.move_3}</h3>
-                                            <h3>{product.move_4}</h3>
+                                            {product.moves?.map((pm) => (
+                                                <h3
+                                                    key={pm.slot}
+                                                    className="move-chip"
+                                                    style={{ background: pm.move?.type?.color_hex || '#444' }}
+                                                >
+                                                    {pm.move?.display_name}
+                                                </h3>
+                                            ))}
                                         </div>
                                     </div>
                                     <div className="product-quantity-price-container">

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, redirect
 from flask_login import current_user, login_required
-from app.models import db, Product, Review, WatchlistItem, Watchlist
+from app.models import db, Product, ProductMove, Move, Review, WatchlistItem, Watchlist
 from app.forms import ProductForm, ReviewForm
 
 product_routes = Blueprint("products", __name__)
@@ -53,14 +53,18 @@ def post_product():
         quantity=data.get("quantity"),
         price=data.get("price"),
         description=data.get("description"),
-        move_1=data.get("move_1"),
-        move_2=data.get("move_2"),
-        move_3=data.get("move_3"),
-        move_4=data.get("move_4"),
     )
 
     try:
         db.session.add(new_product)
+        db.session.flush()
+
+        move_ids = data.get("move_ids", [])
+        for slot, move_id in enumerate(move_ids[:4], start=1):
+            if move_id:
+                pm = ProductMove(product_id=new_product.id, move_id=int(move_id), slot=slot)
+                db.session.add(pm)
+
         db.session.commit()
     except Exception as e:
         db.session.rollback()
@@ -93,13 +97,13 @@ def update_product(product_id):
     product.description = data.get("description", product.description)
     product.quantity = data.get("quantity", product.quantity)
 
-    # Update new move fields
-    product.move_1 = data.get("move_1", product.move_1)
-    product.move_2 = data.get("move_2", product.move_2)
-    product.move_3 = data.get("move_3", product.move_3)
-    product.move_4 = data.get("move_4", product.move_4)
+    if "move_ids" in data:
+        ProductMove.query.filter_by(product_id=product_id).delete()
+        for slot, move_id in enumerate(data["move_ids"][:4], start=1):
+            if move_id:
+                pm = ProductMove(product_id=product.id, move_id=int(move_id), slot=slot)
+                db.session.add(pm)
 
-    # Commit the changes to the database
     db.session.commit()
 
     return jsonify(product.to_dict()), 200

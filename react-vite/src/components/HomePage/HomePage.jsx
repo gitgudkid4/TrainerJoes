@@ -151,10 +151,15 @@ const HomePage = () => {
                                     <h4>Item: {product.item}</h4>
                                 </div>
                                 <div className="move-container">
-                                    <h5>{product.move_1}</h5>
-                                    <h5>{product.move_2}</h5>
-                                    <h5>{product.move_3}</h5>
-                                    <h5>{product.move_4}</h5>
+                                    {product.moves?.map((pm) => (
+                                        <h5
+                                            key={pm.slot}
+                                            className="move-chip"
+                                            style={{ background: pm.move?.type?.color_hex || '#444' }}
+                                        >
+                                            {pm.move?.display_name}
+                                        </h5>
+                                    ))}
                                 </div>
                                 <div className="shiny-container">
                                     <h2
