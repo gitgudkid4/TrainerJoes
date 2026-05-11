@@ -1,45 +1,22 @@
-/* TODO: Add sitewide styles */
+/* Sitewide base styles */
 
-h1,
-h2,
-h3,
-h4,
-span,
-a,
-p {
-    font-weight: normal;
-    font-family: "Pixelify Sans", sans-serif;
-    color: black;
-}
-
-/* Ensure that html and body take up full height */
 html,
 body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background: #fff;
 }
 
-/* Apply background image and cover the entire body */
+h1, h2, h3, h4, span, a, p {
+    font-weight: normal;
+    font-family: "Pixelify Sans", sans-serif;
+    color: black;
+}
 
 .background-wrapper {
     position: relative;
     width: 100%;
-    min-height: 100vh; /* Ensures it covers the entire viewport height */
-    background-image: url("../public/wp11632132.jpg"); /* Path to your background image */
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; /* Centers the background image */
-    font-family: "Pixelify Sans", sans-serif; /* Apply your desired font */
-    background-color: rgba(
-        245,
-        245,
-        245,
-        0.5
-    ); /* Light grey with 80% opacity */
-}
-
-/* Ensure content inside the wrapper flows naturally */
-.background-wrapper > * {
-    position: relative; /* Ensure content is positioned above the background image */
+    min-height: 100vh;
+    background: #fff;
 }

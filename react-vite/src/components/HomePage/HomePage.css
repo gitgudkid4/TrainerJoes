@@ -1,210 +1,445 @@
+/* ── Page ─────────────────────────────────────────────── */
 #homepage-container {
-    padding: 20px;
-    background-color: #f5f5f5;
-    font-family: Arial, sans-serif;
-    color: #333;
+    min-height: 100vh;
+    background: #f2f2f2;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    padding: 0 0 80px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 36px;
+/* ── Page header bar ─────────────────────────────────── */
+#homepage-container > h1 {
+    background: #111;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: left;
+    margin: 0;
+    padding: 36px 80px;
+    border-bottom: 1px solid #2a2a2a;
 }
 
-.product-list-container {
+/* ── Filter bar ──────────────────────────────────────── */
+.filter-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 80px;
+    background: #fff;
+    border-bottom: 1px solid #e2e2e2;
+    transform: none;
+    margin: 0;
 }
 
+.filter-container h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0;
+}
+
+#type-filter {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #111;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 14px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: auto;
+}
+
+#type-filter:focus {
+    border-color: #111;
+}
+
+/* ── Product grid ────────────────────────────────────── */
+.product-list-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 36px 80px 0;
+}
+
+/* ── Card shell ──────────────────────────────────────── */
 .product-container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transition: box-shadow 0.2s, transform 0.2s;
     overflow: hidden;
-    width: 280px;
-    margin-bottom: 20px;
 }
 
 .product-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
 }
 
-.game-gen-container,
-.name-level,
-.ability-nature-item,
-.move-container,
-.shiny-container,
-.price-container {
-    padding: 10px 20px;
-    text-align: center;
+.product-container > a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
-.game-gen-container h3,
-.game-gen-container h4,
-.name-level h3,
-.name-level h4 {
-    margin: 5px 0;
+.product-container > a:hover {
+    text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   CARD SECTIONS — visual order via flex `order`
+══════════════════════════════════════════════════════ */
+
+/* 1 ─ Pokemon image */
+.pokemon-image {
+    order: 1;
+    background: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    overflow: hidden;
+    padding: 16px;
+    position: relative;
 }
 
 .pokemon-image img {
-    width: 100%;
-    height: auto;
+    max-height: 148px;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: block;
 }
 
-.ability-nature-item h4,
-.move-container h5 {
-    margin: 8px 0;
-    font-weight: 400;
+.product-container:hover .pokemon-image img {
+    transform: scale(1.1);
 }
 
+/* 2 ─ Types */
+.homepage-type-container {
+    order: 2;
+    display: flex;
+    gap: 6px;
+    padding: 12px 14px 0;
+    transform: none;
+    margin: 0;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pokemon-type {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    color: #fff;
+    background: #555;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+.pokemon-type.fire     { background: #e64; }
+.pokemon-type.water    { background: #48a; }
+.pokemon-type.grass    { background: #5a8; }
+.pokemon-type.electric { background: #ca0; }
+.pokemon-type.psychic  { background: #c36; }
+.pokemon-type.ice      { background: #5bb; }
+.pokemon-type.dragon   { background: #538; }
+.pokemon-type.dark     { background: #222; }
+.pokemon-type.fairy    { background: #c69; }
+.pokemon-type.normal   { background: #888; }
+.pokemon-type.fighting { background: #833; }
+.pokemon-type.flying   { background: #79c; }
+.pokemon-type.poison   { background: #72a; }
+.pokemon-type.ground   { background: #963; }
+.pokemon-type.rock     { background: #876; }
+.pokemon-type.bug      { background: #6a2; }
+.pokemon-type.ghost    { background: #547; }
+.pokemon-type.steel    { background: #89a; }
+
+/* 3 ─ Name + Level badge */
+.name-level {
+    order: 3;
+    padding: 10px 14px 0;
+}
+
+.name-level h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 6px;
+    letter-spacing: -0.3px;
+}
+
+/* Level rendered as a dark pill */
+.name-level h4 {
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin: 0;
+}
+
+/* 4 ─ Seller / game — subtle attribution strip */
+.game-gen-container {
+    order: 4;
+    padding: 10px 14px;
+    margin-top: 10px;
+    background: #f9f9f9;
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+}
+
+.game-gen-container h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 2px;
+    letter-spacing: 0.3px;
+    text-transform: none;
+}
+
+.game-gen-container h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    color: #bbb;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.game-gen-container h4 {
+    display: none; /* Game Generation is redundant alongside Game — hide cleanly */
+}
+
+/* 5 ─ Stats: Ability / Nature / Item */
+.ability-nature-item {
+    order: 5;
+    padding: 10px 14px 0;
+    border-left: 3px solid #111;
+    margin: 10px 14px 0;
+    padding-left: 10px;
+}
+
+.ability-nature-item h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    color: #444;
+    margin: 0 0 4px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+/* Style the label portion (e.g. "Ability:") via first-word emphasis */
+.ability-nature-item h4::first-line {
+    font-weight: 800;
+}
+
+/* 6 ─ Moves as dark chips */
 .move-container {
-    min-height: 100px; /* Adjust this height as necessary */
+    order: 6;
+    padding: 10px 14px 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    min-height: unset;
+}
+
+.move-container h5 {
+    background: #111;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    text-align: center;
+}
+
+/* 7 ─ Shiny badge */
+.shiny-container {
+    order: 7;
+    padding: 10px 14px 2px;
 }
 
 .shiny-container h2 {
-    font-size: 24px;
-    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0;
+    display: inline-block;
 }
 
 .shiny {
-    color: #ffcc00; /* Gold color for Shiny */
+    background: linear-gradient(90deg, #b8860b, #f5c518);
+    color: #fff;
+    padding: 4px 12px;
+    box-shadow: 0 2px 8px rgba(184, 134, 11, 0.35);
 }
 
 .not-shiny {
-    color: #d9534f; /* Red color for Not Shiny */
     visibility: hidden;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    display: block;
 }
 
+/* 8 ─ Price + stock */
 .homepage-price-container {
+    order: 8;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 14px 14px;
+    border-top: 1px solid #e8e8e8;
+    margin-top: auto;
 }
+
 .homepage-price-container h3 {
-    margin: 10px 0;
-    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin: 0;
+    letter-spacing: -0.5px;
 }
 
-NavLink {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+/* "X left!" stock counter */
+.homepage-price-container h3:last-child {
+    font-size: 10px;
+    font-weight: 700;
+    color: #bbb;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
-.product-container a {
-    text-decoration: none;
-    display: block;
-}
-
-.product-container a:hover {
-    text-decoration: none;
-}
-
-.user-product {
-    padding-left: 50px;
-}
-
-#homepage-container {
-    padding: 20px;
-    background-color: rgba(
-        245,
-        245,
-        245,
-        0.5
-    ); /* Light grey with 80% opacity */
-    font-family: Arial, sans-serif;
-    color: #333;
-}
-
+/* ── Card action buttons ──────────────────────────────── */
 .cart-watchlist {
     display: flex;
-    justify-content: space-around;
-}
-
-.add-to-watchlist-button {
-    background-color: #c3b091; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */
-    cursor: pointer; /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-}
-
-.add-to-watchlist-button:hover {
-    background-color: #c3b151; /* Change background color on hover */
+    gap: 0;
+    border-top: 1px solid #e2e2e2;
 }
 
 .cart-button {
-    background-color: #c3b091; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */
-    cursor: pointer; /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
-    width: 116.67px;
+    flex: 1;
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 11px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    margin: 0;
+    border-radius: 0;
 }
 
 .cart-button:hover {
-    background-color: #c3b151; /* Change background color on hover */
+    background: #e00;
 }
 
 .cart-text {
-    background-color: gray; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners *//* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
+    flex: 1;
+    background: #f0f0f0;
+    color: #aaa;
+    padding: 11px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     text-align: center;
+    display: inline-block;
+}
+
+.add-to-watchlist-button {
+    flex: 1;
+    border-left: 1px solid #e2e2e2;
+    display: flex;
+    margin: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.add-to-watchlist-button button {
+    width: 100%;
+    background: transparent;
+    color: #666;
+    border: none;
+    padding: 11px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.add-to-watchlist-button button:hover {
+    background: #111;
+    color: #fff;
 }
 
 .watchlisted-text {
-    background-color: gray; /* Background color */
-    color: white; /* Text color */
-    border: none; /* Remove border if any */
-    padding: 10px 20px; /* Adjust padding */
-    border-radius: 5px; /* Optional: rounded corners */ /* Show a pointer cursor on hover */
-    font-size: 13px; /* Adjust font size */
-    font-family: "Pixelify Sans", sans-serif; /* Optional: use your font */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    margin-bottom: 10px;
+    flex: 1;
+    background: #f0f0f0;
+    color: #aaa;
+    padding: 11px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     text-align: center;
+    display: inline-block;
+    border-left: 1px solid #e2e2e2;
 }
 
-.homepage-type-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Align items vertically */
-    gap: 1em; /* Add some space between types if there are two */
-    transform: translate(0px, 10px);
-    margin-bottom: 20px
-}
-
-/* Center the types container if there is only one type */
-.homepage-type-container h3 {
-    text-align: center; /* Center text inside each type */
-}
-
-.filter-container {
-    margin-bottom: 20px; /* Adjust as needed */
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between label and dropdown */
-    transform: translate(30px, -60px)
+.user-product {
+    padding: 11px 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #bbb;
+    border-top: 1px solid #e2e2e2;
+    background: #fafafa;
+    margin: 0;
+    text-align: center;
 }
